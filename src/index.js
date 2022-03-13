@@ -158,7 +158,7 @@
 
            if(!(typeof n=="number")){
 
-               throw new SyntaxError("All the items of [].min must be numbers.")
+               throw new SyntaxError("All the items of [].max must be numbers.")
 
            }
        
