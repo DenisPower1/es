@@ -27,11 +27,20 @@ strings.toSet(); // Set(2) {'Denis', 'Power'}
 //Plain Javascript Object.
 
 const user={
-firstname:"Denis", single:true, surname:"Power"
+
+firstname:"Denis",
+single:true, 
+surname:"Power"
+
 };
 
 user.length; // 3
+
 user.toMap(); // Map(3) {'firstname' => 'Denis', 'single' => true, 'surname' => 'Power'}
+
+user.destroy();
+
+user.length; // 0
 
 // Set
 
