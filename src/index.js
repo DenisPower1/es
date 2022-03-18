@@ -11,8 +11,7 @@
     if(!Array.prototype.at){
 
         /**
-         * 
-         * No support for at(ES2022) method.
+         * If the plataform does not support at(ES2022) method.
          * 
          */
 
@@ -88,22 +87,8 @@
 
         return set;
 
-    }
-
-    Array.prototype.toWeakSet=function(){
-
-
-        const weakset=new WeakSet();
-
-        for(let item of this){
-
-            weakset.add(item);
-
-        };
-
-        return weakset;
-
     };
+
 
     Array.prototype.min=function(){
 
@@ -158,7 +143,7 @@
 
            if(!(typeof n=="number")){
 
-               throw new SyntaxError("All the items of [].max must be numbers.")
+               throw new SyntaxError("All the items of [].min must be numbers.")
 
            }
        
@@ -202,6 +187,8 @@
                 
 
             },
+            enumerable:!1,
+            writable:!1
             
         },
         toMap:{
@@ -216,26 +203,24 @@
 
                 return map
 
-            }
+            },
+            enumerable:!1,
+            writable:!1
         },
-        toWeakMap:{
+        destroy:{
             value(){
 
-                
-                const weakmap=new WeakMap();
+                for(let prop in this){
 
-                for(prop in this){
+                    delete this[prop]
 
-                    weakmap.set(prop, this[prop]);
                 };
 
-                return weakmap
-
-            }
-
-
-            
+            },
+            enumerable:!1,
+            writable:!1
         }
+        
 
     });
 
@@ -244,12 +229,6 @@
 
     Set.prototype.toArray=function(){
 
-
-        return Array.from(this);
-
-    };
-
-    WeakSet.prototype.toArray=function(){
 
         return Array.from(this);
 
@@ -268,18 +247,5 @@
         return obj;
 
     };
-
-    WeakMap.prototype.toObj=function(){
-
-        let obj=Object.create(null);
-
-        this.forEach((value,key)=>{
-
-            obj[key]=value;
-           
-        });
-
-        return obj;
-    }
 
 
